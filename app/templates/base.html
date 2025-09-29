@@ -12,8 +12,14 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}" />
-    <script defer src="{{ url_for('static', path='js/app.js') }}"></script>
+    {% block head_assets %}
+      <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}" />
+      <link
+        rel="preload"
+        href="{{ url_for('static', path='js/app.js') }}"
+        as="script"
+      />
+    {% endblock %}
   </head>
   <body>
     <div class="noise"></div>
@@ -26,10 +32,14 @@
           <span></span>
         </button>
         <div class="nav__links">
-          <a href="{{ request.url_for('read_home') }}" class="nav__link">Início</a>
-          <a href="{{ request.url_for('read_vision') }}" class="nav__link">Visão</a>
-          <a href="{{ request.url_for('read_home') }}#ecosystem" class="nav__link">Ecossistema</a>
-          <a href="{{ request.url_for('read_home') }}#contact" class="nav__link nav__cta">Conectar</a>
+          {% block nav_links %}
+            <a href="{{ request.url_for('read_home') }}" class="nav__link">Início</a>
+            <a href="{{ request.url_for('read_vision') }}" class="nav__link">Visão</a>
+            <a href="{{ request.url_for('read_home') }}#ecosystem" class="nav__link">Ecossistema</a>
+            <a href="{{ request.url_for('read_home') }}#contact" class="nav__link nav__cta">
+              Conectar
+            </a>
+          {% endblock %}
         </div>
       </nav>
       {% block hero %}{% endblock %}
@@ -63,6 +73,8 @@
       <p class="footer__note">© {{ now().year }} PulseSphere. Experimente o amanhã, hoje.</p>
     </footer>
 
+    {% block before_scripts %}{% endblock %}
+    <script defer src="{{ url_for('static', path='js/app.js') }}"></script>
     {% block scripts %}{% endblock %}
   </body>
 </html>
