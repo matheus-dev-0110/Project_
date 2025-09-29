@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}PulseSphere{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}" />
+    <script defer src="{{ url_for('static', path='js/app.js') }}"></script>
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="hero">
+      <nav class="nav">
+        <a class="logo" href="/">PulseSphere</a>
+        <button class="nav__toggle" aria-label="Abrir navegação">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav__links">
+          <a href="/" class="nav__link">Início</a>
+          <a href="/vision" class="nav__link">Visão</a>
+          <a href="#ecosystem" class="nav__link">Ecossistema</a>
+          <a href="#contact" class="nav__link nav__cta">Conectar</a>
+        </div>
+      </nav>
+      {% block hero %}{% endblock %}
+    </header>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer class="footer">
+      <div class="footer__grid">
+        <div>
+          <h3>PulseSphere</h3>
+          <p>Aceleramos ecossistemas que redefinem o futuro com tecnologia, arte e impacto social.</p>
+        </div>
+        <div>
+          <h4>Explorar</h4>
+          <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/vision">Visão</a></li>
+            <li><a href="#ecosystem">Ecossistema</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="mailto:hello@pulsesphere.io">hello@pulsesphere.io</a></li>
+            <li><a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a></li>
+            <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__note">© {{ now().year }} PulseSphere. Experimente o amanhã, hoje.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}PulseSphere — Plataforma de Experiências Futuristas{% endblock %}
+
+{% block hero %}
+  <div class="hero__content">
+    <div class="hero__text">
+      <p class="eyebrow">Experimente o futuro</p>
+      <h1>Conecte pessoas, dados e sensações em uma única plataforma imersiva.</h1>
+      <p>
+        A PulseSphere cria experiências digitais que combinam inteligência artificial, biofeedback e narrativas interativas para
+        transformar a forma como marcas e comunidades se conectam.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#ecosystem">Explorar ecossistema</a>
+        <a class="btn btn--ghost" href="/vision">Nossa visão</a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="orbital">
+        <div class="orbital__core"></div>
+        <div class="orbital__ring"></div>
+        <div class="orbital__ring orbital__ring--delay"></div>
+      </div>
+      <div class="metrics">
+        <div class="metric">
+          <span class="metric__label">Experiências ativadas</span>
+          <span class="metric__value" data-count="128">0</span>
+        </div>
+        <div class="metric">
+          <span class="metric__label">Sensores conectados</span>
+          <span class="metric__value" data-count="412">0</span>
+        </div>
+        <div class="metric">
+          <span class="metric__label">Tempo médio imersivo</span>
+          <span class="metric__value metric__value--small" data-count="47">0</span>
+          <span class="metric__suffix">min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <section class="section" id="ecosystem">
+    <div class="section__header">
+      <h2>Nosso ecossistema</h2>
+      <p>Uma plataforma modulada em quatro camadas para experiências interconectadas em tempo real.</p>
+    </div>
+    <div class="ecosystem">
+      <article class="ecosystem__card">
+        <h3>Pulse OS</h3>
+        <p>Motor central de experiências com AI generativa, roteamento sensorial e personalização contextual.</p>
+        <ul>
+          <li>Geração adaptativa de cenários</li>
+          <li>Integração com wearables</li>
+          <li>Análises em tempo real</li>
+        </ul>
+      </article>
+      <article class="ecosystem__card">
+        <h3>BioMesh</h3>
+        <p>Rede biométrica segura para captar sinais vitais e traduzir emoções em interações digitais.</p>
+        <ul>
+          <li>Módulos plug & play</li>
+          <li>Privacidade com consentimento granular</li>
+          <li>Visualização de dados afetivos</li>
+        </ul>
+      </article>
+      <article class="ecosystem__card">
+        <h3>SenseCloud</h3>
+        <p>Streaming multisensorial com latência ultrabaixa para experiências sinestésicas em qualquer lugar do mundo.</p>
+        <ul>
+          <li>Suporte a metaversos</li>
+          <li>Algoritmos de sincronização neural</li>
+          <li>Biblioteca de estímulos pronta para uso</li>
+        </ul>
+      </article>
+      <article class="ecosystem__card">
+        <h3>Impact Lab</h3>
+        <p>Célula de prototipagem e avaliação com foco em impacto social, sustentabilidade e diversidade cultural.</p>
+        <ul>
+          <li>Testes imersivos colaborativos</li>
+          <li>Pesquisas neurocognitivas</li>
+          <li>Programas de formação criativa</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--inverse">
+    <div class="section__header">
+      <h2>Monitoramento vivo</h2>
+      <p>Dados em fluxo contínuo alimentam decisões e experiências personalizadas.</p>
+    </div>
+    <div class="pulse" id="pulse-live"></div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section__header">
+      <h2>Conecte-se</h2>
+      <p>Pronto para construir o futuro com a gente? Conte-nos sobre seu próximo projeto.</p>
+    </div>
+    <form class="contact">
+      <div class="form__group">
+        <label for="name">Nome</label>
+        <input id="name" type="text" placeholder="Seu nome" required />
+      </div>
+      <div class="form__group">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" placeholder="nome@empresa.com" required />
+      </div>
+      <div class="form__group">
+        <label for="message">Mensagem</label>
+        <textarea id="message" rows="4" placeholder="Compartilhe sua ideia visionária"></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary">Enviar proposta</button>
+    </form>
+  </section>
+{% endblock %}
