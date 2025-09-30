@@ -1,3 +1,4 @@
+{% from 'partials/navigation.html' import navigation %}
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -5,48 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}PulseSphere{% endblock %}</title>
+
     {% block head_meta %}{% endblock %}
+
     {% block head_fonts %}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-        rel="stylesheet"
-      />
+      {% include 'partials/head_fonts.html' %}
     {% endblock %}
+
     {% block head_assets %}
-      <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}" />
-      <link
-        rel="preload"
-        href="{{ url_for('static', path='js/app.js') }}"
-        as="script"
-      />
+      <link rel="stylesheet" href="{{ request.url_for('static', path='css/styles.css') }}" />
+      <link rel="preload" href="{{ request.url_for('static', path='js/app.js') }}" as="script" />
     {% endblock %}
+
     {% block head_extra %}{% endblock %}
   </head>
   <body class="{% block body_class %}{% endblock %}">
     <div class="noise"></div>
+
     {% block layout_header %}
       <header class="hero">
         {% block navigation %}
-          <nav class="nav">
-            <a class="logo" href="{{ request.url_for('read_home') }}">PulseSphere</a>
-            <button class="nav__toggle" aria-label="Abrir navegação">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-            <div class="nav__links">
-              {% block nav_links %}
-                <a href="{{ request.url_for('read_home') }}" class="nav__link">Início</a>
-                <a href="{{ request.url_for('read_vision') }}" class="nav__link">Visão</a>
-                <a href="{{ request.url_for('read_home') }}#ecosystem" class="nav__link">Ecossistema</a>
-                <a href="{{ request.url_for('read_home') }}#contact" class="nav__link nav__cta">
-                  Conectar
-                </a>
-              {% endblock %}
-            </div>
-          </nav>
+          {% call navigation(request) %}
+            {% block nav_links %}
+              <a href="{{ request.url_for('read_home') }}" class="nav__link">Início</a>
+              <a href="{{ request.url_for('read_vision') }}" class="nav__link">Visão</a>
+              <a href="{{ request.url_for('read_home') }}#ecosystem" class="nav__link">Ecossistema</a>
+              <a href="{{ request.url_for('read_home') }}#contact" class="nav__link nav__cta">Conectar</a>
+            {% endblock %}
+          {% endcall %}
         {% endblock %}
         {% block hero %}{% endblock %}
       </header>
@@ -55,35 +42,11 @@
     <main>{% block content %}{% endblock %}</main>
 
     {% block layout_footer %}
-      <footer class="footer">
-        <div class="footer__grid">
-          <div>
-            <h3>PulseSphere</h3>
-            <p>Aceleramos ecossistemas que redefinem o futuro com tecnologia, arte e impacto social.</p>
-          </div>
-          <div>
-            <h4>Explorar</h4>
-            <ul>
-              <li><a href="{{ request.url_for('read_home') }}">Início</a></li>
-              <li><a href="{{ request.url_for('read_vision') }}">Visão</a></li>
-              <li><a href="{{ request.url_for('read_home') }}#ecosystem">Ecossistema</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4>Contato</h4>
-            <ul>
-              <li><a href="mailto:hello@pulsesphere.io">hello@pulsesphere.io</a></li>
-              <li><a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a></li>
-              <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
-            </ul>
-          </div>
-        </div>
-        <p class="footer__note">© {{ now().year }} PulseSphere. Experimente o amanhã, hoje.</p>
-      </footer>
+      {% include 'partials/footer.html' %}
     {% endblock %}
 
     {% block before_scripts %}{% endblock %}
-    <script defer src="{{ url_for('static', path='js/app.js') }}"></script>
+    <script defer src="{{ request.url_for('static', path='js/app.js') }}"></script>
     {% block scripts %}{% endblock %}
   </body>
 </html>

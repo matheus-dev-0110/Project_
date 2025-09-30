@@ -1,0 +1,25 @@
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <h3>PulseSphere</h3>
+      <p>Aceleramos ecossistemas que redefinem o futuro com tecnologia, arte e impacto social.</p>
+    </div>
+    <div>
+      <h4>Explorar</h4>
+      <ul>
+        <li><a href="{{ request.url_for('read_home') }}">Início</a></li>
+        <li><a href="{{ request.url_for('read_vision') }}">Visão</a></li>
+        <li><a href="{{ request.url_for('read_home') }}#ecosystem">Ecossistema</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="mailto:hello@pulsesphere.io">hello@pulsesphere.io</a></li>
+        <li><a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a></li>
+        <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer__note">© {{ now().year }} PulseSphere. Experimente o amanhã, hoje.</p>
+</footer>

@@ -1,0 +1,13 @@
+{% macro navigation(request) -%}
+<nav class="nav">
+  <a class="logo" href="{{ request.url_for('read_home') }}">PulseSphere</a>
+  <button class="nav__toggle" aria-label="Abrir navegação">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav__links">
+    {{ caller() }}
+  </div>
+</nav>
+{%- endmacro %}
